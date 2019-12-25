@@ -160,21 +160,19 @@
 class Print
 {
   private:
-    int write_error;
-
     size_t printNumber(UNSIGNED_PRINT_INT_TYPE, uint8_t);
     size_t printFloat(double, uint8_t);
   protected:
-    void setWriteError(int err = 1) { write_error = err; }
+    void setWriteError(int err = 1) { }
   public:
-    Print() : write_error(0) {}
+    Print() {}
 
-    int getWriteError() { return write_error; }
+    int getWriteError() { return 0; }
     void clearWriteError() { setWriteError(0); }
 
-    virtual size_t write(uint8_t) = 0;
+    size_t write(uint8_t) {};
     size_t write(const char *str) { return write((const uint8_t *)str, strlen(str)); }
-    virtual size_t write(const uint8_t *buffer, size_t size);
+    size_t write(const uint8_t *buffer, size_t size);
 
     size_t print(const __FlashStringHelper *);
     size_t print(const String &);
