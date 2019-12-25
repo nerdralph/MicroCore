@@ -33,7 +33,6 @@ uint32_t millis()
     return m;
 }
 
-
 /***** MICROS() *****/
 // Enabling micros() will cause the processor to interrupt more often (every 2048th clock cycle if
 // F_CPU < 4.8 MHz, every 16384th clock cycle if F_CPU >= 4.8 MHz. This will add some overhead when F_CPU is

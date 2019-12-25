@@ -2,10 +2,8 @@
 An Arduino core designed for ATtiny13
 File created and maintained by MCUdude
 https://github.com/MCUdude/MicroCore
-
-This file contains the interrupt 
+This file contains the interrupt
 service routine for millis().
-
 Thanks to Ralph Doncaster for
 creating this ISR in assembly.
 */
@@ -53,7 +51,7 @@ WDT_vect:
     push tmp1
     ldi ZL, lo8(wdt_millis_counter)
     ld tmp1, Z
-    subi tmp1, -19                      ; add 19 (not 16) because the WDT clock isn't really 128 kHz
+    subi tmp1, -19                      ; Add 19 (not 16) because the WDT clock isn't really 128 kHz
     rjmp save
 add1:
     ld tmp1, Z
@@ -71,4 +69,3 @@ save:
     ldi r16, 1<<WDTIE
     out WDTCR, r16
     sei
-

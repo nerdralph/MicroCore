@@ -105,12 +105,11 @@ attiny13.menu.BOD.disabled=BOD disabled
 attiny13.menu.BOD.disabled.bootloader.high_fuses=0xff
 
 
-
 ################
 #### Timing ####
 ################
 
-attiny13.menu.timing.micros_enabled=Micros enabled
-attiny13.menu.timing.micros_enabled.build.timing=-DENABLE_MICROS
 attiny13.menu.timing.micros_disabled=Micros disabled
 attiny13.menu.timing.micros_disabled.build.timing=
+attiny13.menu.timing.micros_enabled=Micros enabled
+attiny13.menu.timing.micros_enabled.build.timing=-DENABLE_MICROS
