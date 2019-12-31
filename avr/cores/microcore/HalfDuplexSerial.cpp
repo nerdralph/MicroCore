@@ -44,13 +44,6 @@ void HalfDuplexSerial::flush()
 }
 */
 
-int HalfDuplexSerial::available(void)
-{
-  // There is never anything available, we have no buffer
-  return 0;
-}
-
-
 int HalfDuplexSerial::peek(void)
 {
   // We have no buffer, no peeking
@@ -115,13 +108,6 @@ void HalfDuplexSerial::read_str(char buf[], uint8_t length)
 
 
 size_t HalfDuplexSerial::write(uint8_t ch)
-{
-  TxByte(ch);
-  return 1;
-}
-
-// A non-virtual version, can be optimized out, always available
-size_t HalfDuplexSerial::write_byte(uint8_t ch)
 {
   TxByte(ch);
   return 1;

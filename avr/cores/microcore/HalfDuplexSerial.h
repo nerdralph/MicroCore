@@ -121,7 +121,7 @@ class HalfDuplexSerial : public Print
     void begin(const uint32_t) { } // Does NOTHING, you have no need to call this, here only for compatibility
     void begin() { }               // Does NOTHING, you have no need to call this, here only for compatibility
     void end() { }                 // Does NOTHING, you have no need to call this, here only for compatibility
-    int available(void) ;          // As we do not have a buffer, this always returns 0
+    int available(void) {return 0;}          // As we do not have a buffer, this always returns 0
     int peek(void)      ;          // As we do not have a buffer, this always returns -1
     void flush(void) { }           // Does NOTHING, you have no need to call this, here only for compatibility
     operator bool();               // Always returns true
@@ -207,32 +207,13 @@ class HalfDuplexSerial : public Print
 
     /** Write a byte.
      *
-     * Caution, this is declared virtual in Print::write() and it will not be optimized out even if not used.
-     *
-     * In order to get around this, we have the
-     * HALF_DUPLEX_SERIAL_DISABLE_WRITE
-     * define, if defined then write() is disabled by way of always returning -1 which will allow
-     * the assembly code behind it to be optimized away.
-     *
-     * However you still can use write_byte() because that can be optimized out.
-     *
      * @param ch Byte to write.
      * @return  Always returns 1
      */
 
     size_t  write(uint8_t ch);
 
-    /** Write a byte, will optimize out.
-     *
-     * The same as write() except not virtual and so can be optimized out, as a result this is
-     * available for you to use even if you set HALF_DUPLEX_SERIAL_DISABLE_WRITE
-     *
-     * @param ch Byte to write.
-     * @return  Always returns 1
-     */
-
-    size_t write_byte(uint8_t ch);
-
+    //everything else inherited from base class
 };
 
 extern HalfDuplexSerial Serial;

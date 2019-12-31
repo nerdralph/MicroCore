@@ -163,14 +163,14 @@ class Print
     size_t printNumber(UNSIGNED_PRINT_INT_TYPE, uint8_t);
     size_t printFloat(double, uint8_t);
   protected:
-    void setWriteError(int err = 1) { }
+    void setWriteError(int err) {(void)err; }
   public:
     Print() {}
 
     int getWriteError() { return 0; }
     void clearWriteError() { setWriteError(0); }
 
-    size_t write(uint8_t) {};
+    virtual size_t write(uint8_t) = 0;
     size_t write(const char *str) { return write((const uint8_t *)str, strlen(str)); }
     size_t write(const uint8_t *buffer, size_t size);
 
